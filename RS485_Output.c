@@ -1,5 +1,5 @@
 // Transmitting one character via RS485 ("A" = 01000001 and "A"+parity bit = 010000010)
-// Using 9600 bit rate and UART_NUM_2
+// Using 9600 bit rate and UART_NUM_2 UART output
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -8,10 +8,8 @@
 #include "driver/uart.h"
 #include "soc/uart_struct.h"
 #include "string.h"
-
 #include <stdio.h>
 #include "esp_event.h"
-
 #include "driver/gpio.h"
 #include "esp_rom_gpio.h"
 
@@ -19,10 +17,9 @@ static const int RX_BUF_SIZE = 1024;
 
 #define UART_2_TX 17
 #define UART_2_RX 16
-
 #define pin15 15
-// #define pin2  2
 
+// UART communication definition
 void init()
 {
     const uart_config_t uart_config = {
@@ -37,30 +34,27 @@ void init()
     uart_driver_install(UART_NUM_2, RX_BUF_SIZE * 2, 0, 0, NULL, 0);
 }
 
+// Send a UART message
 static void tx_task()
 {
     int txBytes = 0;
-    char *data = "A";
+    char *data = "A"; // Character to be send
     int len = strlen(data);
 
     while (1)
     {
-        txBytes = uart_write_bytes(UART_NUM_2, data, len);
-        printf("uart_write_bytes reply - %d\n", txBytes);
+        txBytes = uart_write_bytes(UART_NUM_2, data, len); // Number of transmited bytes (-1 is an error)
+        printf("uart_write_bytes reply - %d\n", txBytes); 
         vTaskDelay(5000 / portTICK_PERIOD_MS);
     }
 }
 
 void app_main()
 {
-    
-    esp_rom_gpio_pad_select_gpio(pin15);            // GPIO to DE pin on MAX485
+    // GPIO to DE pin on MAX485
+    esp_rom_gpio_pad_select_gpio(pin15);            
     gpio_set_direction(pin15, GPIO_MODE_OUTPUT);    
     gpio_set_level(pin15, 1);
-
-    // esp_rom_gpio_pad_select_gpio(pin2);            // GPIO to RE pin on MAX485
-    // gpio_set_direction(pin2, GPIO_MODE_OUTPUT);    
-    // gpio_set_level(pin2, 1);
 
     printf("Send data:\n");
     vTaskDelay(1000 / portTICK_PERIOD_MS);
