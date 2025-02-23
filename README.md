@@ -1,1 +1,1 @@
-RS485_Output - Sending RS485 message from ESP32 by using MAX485
+RS485_Output - ESP32 sends a UART message to the MAX485 board. The MAX485 board converts the message to an RS485 message.
