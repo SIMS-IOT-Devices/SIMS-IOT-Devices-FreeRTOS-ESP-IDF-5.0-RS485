@@ -1,4 +1,4 @@
-Video 1 - ESP32 sends a UART message to the scope<br>
+Video 1 - ESP32 sends a UART message to the Scope<br>
 RS485_Output.c: - ESP32 sends a UART message to the MAX485 board. The MAX485 board converts the message to an RS485 message, which is measured by scope.<br><br>
 
 Video 2 - The message is sent by the following connection ESP32 -> MAX485 -> MAX485 -> ESP32 <br>
