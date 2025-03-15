@@ -6,5 +6,5 @@ ESP32toESP32_Transmit.c - PC1 transmitting a RS485 message from ESP32 to ESP32 b
 ESP32toESP32_Receive.c - PC2 receiving a RS485 message from ESP32 to ESP32 by using a UART <br>
 
 Video 3 - The message is sent by the following connection ESP32 -> MAX485 -> Converter -> PC <br>
-ESP32toESP32_Transmit.c - PC1 transmitting a RS485 message from ESP32 to ESP32 by using a UART <br>
+RS485_from_ESP32_to_Converter.c - ESP32 transmitting a UART to MAX485 <br>
 ESP32toESP32_Receive.c - PC2 receiving a RS485 message from ESP32 to ESP32 by using a UART <br>
