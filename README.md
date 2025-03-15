@@ -7,4 +7,4 @@ ESP32toESP32_Receive.c - PC2 receiving a RS485 message from ESP32 to ESP32 by us
 
 Video 3 - The message is sent by the following connection ESP32 -> MAX485 -> Converter -> PC <br>
 RS485_from_ESP32_to_Converter.c - ESP32 transmitting a UART to MAX485 <br>
-ESP32toESP32_Receive.c - PC2 receiving a RS485 message from ESP32 to ESP32 by using a UART <br>
+RS485_from_Converter_to_PC.py - PC receiving a RS485 message from the Converter connected via USB <br>
